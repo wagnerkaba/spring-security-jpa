@@ -6,4 +6,4 @@
 - Spring Web Starter
 - Spring Security
 - Spring Data JPA
-- MySQL
+- PostgreSQL
