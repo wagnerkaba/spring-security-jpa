@@ -18,6 +18,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        // através do MyUserDetailsService os dados do usuário são carregados
         auth.userDetailsService(userDetailsService);
     }
 

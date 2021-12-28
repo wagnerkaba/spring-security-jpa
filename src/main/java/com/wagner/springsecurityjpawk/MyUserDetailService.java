@@ -16,15 +16,19 @@ public class MyUserDetailService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-
+    // carrega os dados do usuário através do JPA e retorna uma instância de UserDetails
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<MyUser> user = userRepository.findByUsername(username);
+        Optional<MyUser> optionalMyUser = userRepository.findByUsername(username);
 
         //if user does not exists, it throws an exception
-        user.orElseThrow(()-> new UsernameNotFoundException("Not found: " + username));
+        optionalMyUser.orElseThrow(()-> new UsernameNotFoundException("Not found: " + username));
 
-        return user.map(MyUserDetails::new).get();
+        // converte optionalMyUser em MyUserDetails
+        MyUserDetails myUserDetails = optionalMyUser.map(MyUserDetails::new).get();
+
+        return myUserDetails;
+
     }
 }

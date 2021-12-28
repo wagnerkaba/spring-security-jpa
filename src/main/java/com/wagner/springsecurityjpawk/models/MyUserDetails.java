@@ -20,7 +20,7 @@ public class MyUserDetails implements UserDetails {
 
     public MyUserDetails(MyUser myUser){
 
-        // este construtor recebe um objeto da classe User e converte em MyUserDetails
+        // este construtor recebe um objeto da classe MyUser e converte em MyUserDetails
         this.userName = myUser.getUsername();
         this.password = myUser.getPassword();
         this.active = myUser.isActive();
